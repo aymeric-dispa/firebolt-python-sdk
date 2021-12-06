@@ -1,3 +1,4 @@
+
 name: Run integration tests
 on:
   workflow_dispatch:
@@ -40,4 +41,11 @@ jobs:
           API_ENDPOINT: "api.dev.firebolt.io"
         run: |
           pytest -o log_cli=true -o log_cli_level=INFO tests/integration
+      - name: Store runner debug logs
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: runner-diagnostic-logs
+        
         
