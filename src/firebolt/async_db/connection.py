@@ -243,6 +243,7 @@ def async_connect_factory(connection_class: Type) -> Callable:
                 base_url=api_endpoint,
                 account_name=account_name,
                 api_endpoint=api_endpoint,
+                timeout=Timeout(DEFAULT_TIMEOUT_SECONDS),
             ) as client:
                 await client.account_id
 
